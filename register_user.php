@@ -114,6 +114,9 @@ session_start();
                     
                     ?>
             </td>
+            <td>
+                <a href="login.php">Back</a>
+            </td>
         </tr>
     </table>
 

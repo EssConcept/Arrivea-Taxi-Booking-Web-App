@@ -39,3 +39,39 @@
             }
         }
     </script>
+
+
+
+<?php
+                    
+                    echo "Click on the numbers on the left for the next step.";
+
+                    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                        $email = $_POST['email'];
+                        $password1 = $_POST['password1'];
+                        $password2 = $_POST['password2'];
+                        $name = $_POST['name'];
+                        $surname = $_POST['surname'];
+                        $gender = $_POST['gender'];
+                        $username = $_POST['username'];
+
+                        if(!empty($email) && !empty($password1) && !empty($password2) && !empty($name) && !empty($surname) && !empty($gender)
+                        && !empty($username)){
+                            if($password1 == $password2){
+                                $query = "INSERT INTO users(username, email, password, name, surname, gender, role, profile_picture_path)
+                                          VALUES('$username', '$email', '$password1', '$name', '$surname', '$gender', 'user', 'profilepictures/me.png')";
+                                mysqli_query($con, $query);
+                                Header("Location: login.php?email=$email&password=$password1");
+                            }
+                            else{
+                                echo "<br>";
+                                echo "Passwords are not matching!";
+                            }
+                        }
+                        else{
+                            echo "<br>";
+                            echo "Complete the whole form and accept user terms and conditions before submitting the form!";
+                        }
+                    }
+                    
+                    ?>

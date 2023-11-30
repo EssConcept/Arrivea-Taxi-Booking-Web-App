@@ -79,12 +79,21 @@ session_start();
 					            if ($user_data['password'] === $password) {
 						            $_SESSION['user_id'] = $user_data['user_id'];
 
-						            if($user_data['username'] == 'Admin'){
-							            echo"admin";
+						            if($user_data['role'] == 'admin'){
+							            header("Location: admin_home.php");
 						            }
-						            else{
-							            header("Location: index.php");
-						            }
+						            else if($user_data['role'] == 'company'){
+                                        header("Location: company_home.php");
+                                    }
+                                    else if($user_data['role'] == 'user'){
+                                        header("Location: user_home.php");
+                                    }
+                                    else if($user_data['role'] == 'driver'){
+                                        header("Location: driver_home.php");
+                                    }
+                                    else{
+                                        echo "Error!";
+                                    }
 					            }
 					            else{
 						            echo "Wrong password!";
