@@ -1,3 +1,6 @@
+<?php 
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -55,18 +58,20 @@
             padding-left: 10px;
         }
 
-        a:hover {
-            color: white; 
-        }
-
-        a:hover::after {
-            content: '';
-            position: absolute;
-            width: 100%;
+        a::after {
+            content: "";
+            display: block;
             height: 2px;
-            background-color: white;
-            bottom: 0;
+            width: 0%;
+            background-color: #ffffff;
+            position: absolute;
+            bottom: -2px;
             left: 0;
+            transition: width 0.2s ease-in-out;
+        }
+  
+        a:hover::after {
+            width: 100%;
         }
     </style>
     <header>
