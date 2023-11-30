@@ -73,6 +73,7 @@
         a:hover::after {
             width: 100%;
         }
+        
     </style>
     <header>
         <a href="header.html" class="logo"><img src="arrivea-logo2.jpg" height="60px" width="60px"></a>
