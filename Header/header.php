@@ -55,25 +55,22 @@
             padding-left: 10px;
         }
 
-        a::after {
-            content: "";
-            display: block;
-            height: 2px;
-            width: 0%;
-            background-color: #ffffff;
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            transition: width 0.2s ease-in-out;
-        }
-  
-        a:hover::after {
-            width: 100%;
+        a:hover {
+            color: white; 
         }
 
+        a:hover::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: white;
+            bottom: 0;
+            left: 0;
+        }
     </style>
     <header>
-        <a href="header.html" class="logo"><img src="Header/arrivea-logo2.jpg" height="60px" width="60px"></a>
+        <a href="header.html" class="logo"><img src="arrivea-logo2.jpg" height="60px" width="60px"></a>
         <ul>
             <li><a href="#">Example1</a></li>
             <li><a href="#">Example2</a></li>
