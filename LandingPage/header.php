@@ -22,14 +22,14 @@
             background-color: white;
             position: fixed;
             top: 0;
-            left: 0;
+            left: 0px;
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 90px;
             transition: 0.6s;
-            padding: 0px 0px;  
+            padding: 0px 50px;  
             z-index: 2;    
             color: white;   
             border-bottom: 1px solid #D4D4D4;      
@@ -40,6 +40,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            gap: 20px;
         }
 
         header ul li{
@@ -55,10 +56,11 @@
             letter-spacing: 1px;
             font-weight: 600;
             color: black; 
+            
         }
 
         .logo{
-            padding-left: 10px;
+            transform:translateX(120px);
         }
 
         a::after {
@@ -76,15 +78,32 @@
         a:hover::after {
             width: 100%;
         }
-        
+        button {
+            padding: 10px 10px;
+            background-color: #FFF94E;
+            color: black;
+            border-style: none;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: black;
+            color:#FFF94E;
+        }
     </style>
     <header>
-        <img src="arrivea-logo-black.jpg" height="60px" width="60px">
+        <img src="arrivea-logo-black.png" height="70px" width="70px" class="logo">
         <ul>
-            <li><a href="#">Example1</a></li>
-            <li><a href="#">Example2</a></li>
-            <li><a href="#">Example3</a></li>
-            <li><a href="#">Example4</a></li>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><button>Book a taxi</button></li>
+            <li><button>Business account</button></li>
         </ul>
     </header>
 </html>
