@@ -1,0 +1,13 @@
+.user_table{
+    padding-top: 100px;
+    margin-left: 100px;
+}
+.main_table{
+    margin-top: 100px;
+    margin-left: 100px;
+    border: solid 1px black;
+}
+.table_columns{
+    font-weight: bold;
+    padding-right: 10px;
+}

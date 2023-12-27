@@ -120,10 +120,10 @@ session_start();
                             if($password1 == $password2){
 
                                 $query_1 = "INSERT INTO users(username, email, password, name, surname, role, profile_picture_path, phone_number)
-                                          VALUES('$username', '$email', '$password1', '$name', '$surname', 'company', 'profilepictures/me.png', '$phone_number)";
+                                          VALUES('$username', '$email', '$password1', '$name', '$surname', 'company', 'profilepictures/me.png', '$phone_number')";
                                 mysqli_query($con, $query_1);
-                                $query_2 = "INSERT INTO company(company_name, city, price)
-                                            VALUES('$company_name', '$city', '$price'')";
+                                $query_2 = "INSERT INTO company(company_name, city, price, username)
+                                            VALUES('$company_name', '$city', '$price', '$username')";
                                 mysqli_query($con, $query_2);
 
                                 Header("Location: login.php?email=$email&password=$password1");

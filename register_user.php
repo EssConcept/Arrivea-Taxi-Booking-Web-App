@@ -19,13 +19,9 @@ session_start();
     <table>
         <form method="post">
             <tr>
-                <!-- PRVI GUMB... delaj gumb po classu "step" pa se bojo spremenil vsi naenkrat... 
-                also pri register_company je use isto sam en gumb zram pa vec contenta -->
-                
                 <td class="step">
                     <button type="button" onclick="showStep('step_1')">1</button>
                 </td>
-                <!-- SPODNJI TD JE ZA BOX V KATEREM SE DISPLAY-A INPUT... USAK DIV JE POL POSEBEJ NA DISPLAYI  -->
                 <td rowspan="4" id="content-box">
 
                     <div id="step_1" class="step-content active-step" align="center">
@@ -64,7 +60,6 @@ session_start();
                     </div>
                 </td>
             </tr>
-            <!-- GUMBI (LEVA STRAN) -->
             <tr>
                 <td class="step">
                     <button type="button" onclick="showStep('step_2')">2</button>

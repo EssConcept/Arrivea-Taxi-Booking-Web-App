@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&family=Raleway&display=swap');
+        *{
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header{
+            background-color: #000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+            transition: 0.6s;
+            padding: 30px 70px;
+            color: white;   
+        }
+
+        header ul{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;  
+        }
+
+        header ul li{
+            position: relative;
+            list-style: none;
+            color: white;  
+        }
+
+        header ul li a{
+            position: relative;
+            margin: 0 15px;
+            text-decoration: none;
+            letter-spacing: 1px;
+            font-weight: 300;
+            color: white;  
+        }
+
+        .logo{
+            padding-left: 10px;
+        }
+
+        a::after {
+            content: "";
+            display: block;
+            height: 2px;
+            width: 0%;
+            background-color: #ffffff;
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            transition: width 0.2s ease-in-out;
+            color: white;  
+        }
+  
+        a:hover::after {
+            width: 100%;
+        }
+        
+    </style>
+    <header>
+        <a href="company_home.php" class="logo"><img src="arrivea-logo2.jpg" height="60px" width="60px"></a>
+        <ul>
+            <li><a href="company_info.php">Company</a></li>
+            <li><a href="company_stat.php">Statistics</a></li>
+            <li><a href="company_drivers.php">Employees</a></li>
+            <li><a href="company_vehicles.php">Vehicles</a></li>
+            <li><a href="logout.php">Log out</a></li>
+        </ul>
+    </header>
+</html>
