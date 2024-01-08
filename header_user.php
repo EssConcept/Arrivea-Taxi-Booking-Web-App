@@ -75,6 +75,7 @@
     <header>
         <a href="company_home.php" class="logo"><img src="arrivea-logo2.jpg" height="60px" width="60px"></a>
         <ul>
+            <li><a href="user_home.php">Home</a></li>
             <li><a href="user_order.php">Order</a></li>
             <li><a href="logout.php">Log out</a></li>
         </ul>

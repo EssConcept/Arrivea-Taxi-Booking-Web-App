@@ -27,6 +27,6 @@ session_start();
     </script>
 </head>
 <body>
-    
+    <div id='header'></div>
 </body>
 </html>
