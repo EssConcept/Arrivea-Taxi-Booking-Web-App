@@ -59,6 +59,20 @@ session_start();
 
                 const locationButton = document.createElement("button");
 
+                fetch('get_driver_pos.php')
+                .then(response => response.json())
+                .then(data => {
+                    // Loop through the people data and create markers on the map
+                    data.forEach(driver => {
+                        var marker = new google.maps.Marker({
+                            position: {lat: parseFloat(driver.latitude), lng: parseFloat(driver.longitude)},
+                            map: map,
+                            title: driver.driver_id
+                        });
+                    });
+                })
+                .catch(error => console.error('Error:', error));
+
                 locationButton.textContent = "Pan to Current Location";
                 locationButton.classList.add("custom-map-control-button");
                 map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
