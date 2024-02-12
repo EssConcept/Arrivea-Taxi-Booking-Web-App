@@ -16,7 +16,11 @@ session_start();
     <link rel="stylesheet" href="styling/login.css">
 </head>
 <body>
+    <video autoplay loop muted plays-inline class="background-clip">
+        <source src="arrivea_video.mp4" type="video/mp4">
+    </video>
     <table>
+        <th>Log In │ ARRIVEA</th>
         <form method="POST">
             <tr>
                 <td colspan="2">
@@ -38,23 +42,23 @@ session_start();
                     ?>">
                 </td>
                 <td>
-                    <button type="button" onclick="togglePassword()">Show Password</button>
+                    <!--<button type="button" onclick="togglePassword()" class="pass-btn">Show Password</button>-->
                 </td>
             </tr>
             <tr>
                 <td colspan="2">
-                    <button type="submit" name="login_button">Log in</button>
+                    <button type="submit" name="login_button" class="login-btn">Log In</button>
                 </td>
             </tr>
             <tr>
                 <td colspan="2"><hr></td>
             </tr>
             <tr>
-                <td colspan="2" align="center">Don't have an account yet? <a href="register_user.php">Register here</a></td>
+                <td colspan="2" align="center" class="desc">Don't have an account yet? <a href="register_user.php">Register here</a></td>
             </tr>
             <tr><td colspan="2"><br></td></tr>
             <tr>
-                <td colspan="2" align="center">Creating a <a href="register_company.php">business account</a>?</td>
+                <td colspan="2" align="center" class="desc">Create a <a href="register_company.php">business account</a></td>
             </tr>
         </form>
         <tr><td colspan="2"><br></td></tr>

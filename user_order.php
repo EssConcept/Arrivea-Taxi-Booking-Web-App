@@ -31,6 +31,7 @@ session_start();
         #map {
             height: 700px;
             width: 800px;
+            transform: translatex(500px) translateY(200px);
         }
 
         .custom-map-control-button {
@@ -51,10 +52,23 @@ session_start();
             let map, infoWindow;
 
             function initMap() {
-                map = new google.maps.Map(document.getElementById("map"), {
-                    center: { lat: 46.249, lng: 15.272 },
-                    zoom: 6,
-                });
+            // Define bounds for restricting map panning and zooming
+            const bounds = {
+                north: 85, // Maximum latitude
+                south: -75, // Minimum latitude
+                east: 180, // Maximum longitude
+                west: -180 // Minimum longitude
+            };
+
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: { lat: 46.249, lng: 15.272 },
+                zoom: 6,
+                minZoom: 4,
+                restriction: {
+                    latLngBounds: bounds,
+                    strictBounds: false // Allow the map to zoom out slightly beyond the bounds
+                }
+            });
                 infoWindow = new google.maps.InfoWindow();
 
                 const locationButton = document.createElement("button");
@@ -69,6 +83,10 @@ session_start();
                             map: map,
                             title: driver.driver_id
                         });
+                        marker.addListener('click', function() {
+
+                        handleMarkerClick(driver);
+                    });
                     });
                 })
                 .catch(error => console.error('Error:', error));
@@ -109,6 +127,15 @@ session_start();
                 //});
             }
 
+            function handleMarkerClick(driver) {
+            // You can customize this function to display driver details or perform any action
+            // For now, let's just display an alert with the driver ID
+            let driverId = driver.driver_id;
+
+            var newUrl = 'user_order.php?driverId=' + encodeURIComponent(driverId);
+            window.location.href = newUrl;
+            }
+
             function handleLocationError(browserHasGeolocation, infoWindow, pos) {
                 infoWindow.setPosition(pos);
                 infoWindow.setContent(
@@ -120,5 +147,41 @@ session_start();
             }
         </script>
     </div>
+    <?php
+
+        $isLinkSet;
+        if(isset($_GET['driverId'])){
+        $isLinkSet = true;
+        }
+        else{
+        $isLinkSet = false;
+        echo 'no link';
+        }
+
+        if($isLinkSet == true){
+            $driver_id = $_GET['driverId'];
+
+            $sql = "SELECT * FROM users WHERE user_id = '$driver_id'";
+            $result = mysqli_query($con, $sql);
+            $row = mysqli_fetch_assoc($result);
+
+            $sql1 = "SELECT * FROM employee WHERE driver_id = '$driver_id'";
+            $result1 = mysqli_query($con, $sql1);
+            $row1 = mysqli_fetch_assoc($result1);
+            $company_id = $row1['company_id'];
+
+            $sql2 = "SELECT * FROM company WHERE company_id = '$company_id'";
+            $result2 = mysqli_query($con, $sql2);
+            $row2 = mysqli_fetch_assoc($result2);
+
+            echo '<div>';
+            echo '<p>Name: ' . $row['name'] . '</p>';
+            echo '<p>Surname: ' . $row['surname'] . '</p>';
+            echo '<p>Company Name: ' . $row2['company_name'] . '</p>';
+            echo '<p>Price per KM: ' . $row2['price'] . '</p>';
+            echo '</div>';
+          }
+
+    ?>
 </body>
 </html>

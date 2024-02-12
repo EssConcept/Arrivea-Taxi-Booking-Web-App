@@ -12,16 +12,21 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Registration</title>
+    <title>User Registration│ARRIVEA</title>
     <link rel="stylesheet" href="styling/register_user.css">
 </head>
 <body>
     <table>
         <form method="post">
+        <th colspan="3" class="title">Register <span class="title-2nd">user</span> </th>
             <tr>
+                <!-- PRVI GUMB... delaj gumb po classu "step" pa se bojo spremenil vsi naenkrat... 
+                also pri register_company je use isto sam en gumb zram pa vec contenta -->
+                
                 <td class="step">
                     <button type="button" onclick="showStep('step_1')">1</button>
                 </td>
+                <!-- SPODNJI TD JE ZA BOX V KATEREM SE DISPLAY-A INPUT... USAK DIV JE POL POSEBEJ NA DISPLAYI  -->
                 <td rowspan="4" id="content-box">
 
                     <div id="step_1" class="step-content active-step" align="center">
@@ -47,7 +52,7 @@ session_start();
                     <div id="step_3" class="step-content" align="center">
                         <br>
                         <input type="text" name="username" id="username" placeholder="Username" required><br><br>
-                        <input type="tel" name="tel" id="tel" placeholder="Phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"><br><br>
+                        <input type="tel" name="tel" id="tel" placeholder="Phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"><br><br>
                     </div>
 
                     <div id="step_4" class="step-content" align="center">
@@ -60,6 +65,7 @@ session_start();
                     </div>
                 </td>
             </tr>
+            <!-- GUMBI (LEVA STRAN) -->
             <tr>
                 <td class="step">
                     <button type="button" onclick="showStep('step_2')">2</button>
@@ -77,12 +83,17 @@ session_start();
                     <button type="button" onclick="showStep('step_4')">4</button>
                 </td>
             </tr>
+
+            <tr>
+                <td colspan="3" class="note">*Click on the numbers on the left for the next step.</td>
+                <td></td>
+            </tr>
         </form>
         <tr>
             <td colspan="10" align="center">
                     <?php
                     
-                    echo "Click on the numbers on the left for the next step.";
+                    
 
                     if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         $email = $_POST['email'];
@@ -115,12 +126,24 @@ session_start();
                     
                     ?>
             </td>
-            <td>
-                <a href="login.php">Back</a>
+        </tr>
+
+        <tr>
+            <td colspan="3"><button class="learn-more" onclick="redirect()">
+                <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+                </span>
+                <span class="button-text">Back</span>
+                </button>
             </td>
         </tr>
     </table>
 
+    <script>
+    function redirect() {
+    window.location.href = "login.php";
+    }
+    </script>
     <script>
         function showStep(stepId) {
             var steps = document.querySelectorAll('.step-content');

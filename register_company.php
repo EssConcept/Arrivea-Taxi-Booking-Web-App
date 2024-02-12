@@ -12,11 +12,12 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account Registration</title>
+    <title>Company Registration│ARRIVEA</title>
     <link rel="stylesheet" href="styling/register_company.css">
 </head>
 <body>
-    <table>
+    <table border="0px">
+        <th colspan="3" class="title">Register <span class="title-2nd">your company</span> </th>
         <form method="post">
             <tr>
                 <td class="step">
@@ -96,13 +97,15 @@ session_start();
                     <hr class="step-divider">
                 </td>
             </tr>
+            <tr>
+                <td colspan="3" class="note">*Click on the numbers on the left for the next step.</td>
+                <td></td>
+            </tr>
         </form>
         <tr>
             <td colspan="10">
                 <?php
                     
-                    echo "Click on the numbers on the left for the next step.";
-
                     if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         $email = $_POST['email'];
                         $password1 = $_POST['password1'];
@@ -141,13 +144,24 @@ session_start();
                     
                 ?>
             </td>
-
-            <td>
-                <a href="login.php">Back</a>
+        </tr>
+        <tr>
+            <td colspan="3"><button class="learn-more" onclick="redirect()">
+                <span class="circle" aria-hidden="true">
+                <span class="icon arrow"></span>
+                </span>
+                <span class="button-text">Back</span>
+                </button>
             </td>
         </tr>
     </table>
+    
 
+<script>
+  function redirect() {
+    window.location.href = "login.php";
+  }
+</script>
     <script>
         // Function to show the selected step
         function showStep(stepId) {
