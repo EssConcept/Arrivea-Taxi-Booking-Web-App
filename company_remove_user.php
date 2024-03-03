@@ -84,5 +84,6 @@ session_start();
             <input type="submit">
         </form>
     </div>
+    <button><a href="company_drivers.php">Cancel</a></button>
 </body>
 </html>

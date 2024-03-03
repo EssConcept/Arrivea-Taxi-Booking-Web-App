@@ -44,7 +44,7 @@ session_start();
                         <br>
                         <input type="text" name="username" id="username" placeholder="Username" required><br><br>
                         <input type="text" name="company_name" id="company_name" placeholder="Company name"><br><br>
-                        <input type="tel" name="tel" id="tel" placeholder="Phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"><br><br>
+                        <input type="tel" name="tel" id="tel" placeholder="Phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"><br><br>
                         
                     </div>
 

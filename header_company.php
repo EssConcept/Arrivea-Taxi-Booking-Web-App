@@ -72,7 +72,7 @@
         }
         
     </style>
-    <header>
+    <header class="costum_header">
         <a href="company_home.php" class="logo"><img src="arrivea-logo2.jpg" height="60px" width="60px"></a>
         <ul>
             <li><a href="company_info.php">Company</a></li>

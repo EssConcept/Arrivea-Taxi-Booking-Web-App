@@ -60,7 +60,6 @@ session_start();
                                                 <td>$username</td>
                                                 <td>$gender</td>
                                                 <td><a href='company_driver_stat.php?driver_id=$driver_id'>Driver statistics</a></td>
-                                                <td><a href='company_driver_edit.php?driver_id=$driver_id'>Edit user</a></td>
                                                 <td><a href='company_remove_user.php?driver_id=$driver_id'>Remove user</a></td>
                                             </tr>";
                                     }
