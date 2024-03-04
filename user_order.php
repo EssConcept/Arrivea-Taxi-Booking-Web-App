@@ -149,11 +149,7 @@ session_start();
                 geocoder.geocode({ 'address': address }, function (results, status) {
                     if (status === 'OK') {
                         var location = results[0].geometry.location;
-                        var marker = new google.maps.Marker({
-                            map: map,
-                            position: location,
-                            title: ' '
-                        });
+                        
                         map.setCenter(location);
                         calculateAndDisplayRoute (directionsService, directionsRenderer);
                     } else {
@@ -269,7 +265,7 @@ session_start();
             $result = mysqli_query($con, $query);
             $row = mysqli_fetch_assoc($result);
             $vehicle_id = $row['vehicle_id'];
-            $order_time = date("d-m-Y",time());
+            $order_time = date("YYYY-mm-dd",time());
 
             $sql = "INSERT INTO drive(driver_id, passanger_id, vehicle_id, pickup_location, destination)
                     VALUES('$driver_id', '$user_id', '$vehicle_id', '$pickup_location', '$destination')";
@@ -284,6 +280,26 @@ session_start();
 
     ?>
     </div>
+    </div>
+    <div>
+        <?php
+            $user_id = $_SESSION['user_id'];
+          $query = "SELECT d.drive_id,
+          CASE
+              WHEN fd.drive_id IS NOT NULL THEN 'Drive Finished'
+              WHEN rc.confirmation_status = 'confirmed' THEN 'Drive Accepted'
+              WHEN rc.confirmation_status = 'rejected' THEN 'Drive Rejected'
+              ELSE 'Drive Not Confirmed'
+            END AS drive_status
+            FROM drive d
+            LEFT JOIN finished_drives fd ON d.drive_id = fd.drive_id
+            LEFT JOIN ride_confirmation rc ON d.drive_id = rc.drive_id
+            WHERE d.passanger_id = $user_id;";
+            $result = mysqli_query($con, $query);
+            $row = mysqli_fetch_assoc($result);
+            echo $row;
+
+        ?>
     </div>
 </body>
 </html>
