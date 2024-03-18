@@ -54,7 +54,6 @@ session_start();
             function initMap() {
                 
 
-            // Define bounds for restricting map panning and zooming
             const bounds = {
                 north: 85, // Maximum latitude
                 south: -75, // Minimum latitude
@@ -68,7 +67,7 @@ session_start();
                 minZoom: 4,
                 restriction: {
                     latLngBounds: bounds,
-                    strictBounds: false // Allow the map to zoom out slightly beyond the bounds
+                    strictBounds: false
                 }
             });
                 infoWindow = new google.maps.InfoWindow();
@@ -77,7 +76,6 @@ session_start();
                 directionsRenderer = new google.maps.DirectionsRenderer();
                 directionsRenderer.setMap(map);
 
-                const locationButton = document.createElement("button");
 
                 fetch('get_driver_pos.php')
                 .then(response => response.json())
@@ -97,11 +95,8 @@ session_start();
                 })
                 .catch(error => console.error('Error:', error));
 
-                locationButton.textContent = "Pan to Current Location";
-                locationButton.classList.add("custom-map-control-button");
-                map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
-                //locationButton.addEventListener("click", () => {
-                    // Try HTML5 geolocation.
+
+
                     if (navigator.geolocation) {
                         navigator.geolocation.getCurrentPosition(
                             (position) => {
@@ -111,15 +106,10 @@ session_start();
                                 };
                                 usrpos = position.coords.latitude + ',' +position.coords.longitude;
 
-                                new google.maps.Marker({
+                                var markerp = new google.maps.Marker({
                                 position: pos,
                                 map: map,
                                 });
-
-                                //infoWindow.setPosition(pos);
-                                //infoWindow.setContent("Location found.");
-                                //infoWindow.open(map);
-                                //map.setCenter(pos);
                             },
                             () => {
                                 handleLocationError(true, infoWindow, map.getCenter());
@@ -130,12 +120,10 @@ session_start();
                         handleLocationError(false, infoWindow, map.getCenter());
                     }
 
-                //});
             }
 
             function handleMarkerClick(driver) {
-            // You can customize this function to display driver details or perform any action
-            // For now, let's just display an alert with the driver ID
+
             let driverId = driver.driver_id;
 
             var newUrl = 'user_order.php?driverId=' + encodeURIComponent(driverId) + '&userpos=' + encodeURIComponent(usrpos);
@@ -281,25 +269,6 @@ session_start();
     ?>
     </div>
     </div>
-    <div>
-        <?php
-            $user_id = $_SESSION['user_id'];
-          $query = "SELECT d.drive_id,
-          CASE
-              WHEN fd.drive_id IS NOT NULL THEN 'Drive Finished'
-              WHEN rc.confirmation_status = 'confirmed' THEN 'Drive Accepted'
-              WHEN rc.confirmation_status = 'rejected' THEN 'Drive Rejected'
-              ELSE 'Drive Not Confirmed'
-            END AS drive_status
-            FROM drive d
-            LEFT JOIN finished_drives fd ON d.drive_id = fd.drive_id
-            LEFT JOIN ride_confirmation rc ON d.drive_id = rc.drive_id
-            WHERE d.passanger_id = $user_id;";
-            $result = mysqli_query($con, $query);
-            $row = mysqli_fetch_assoc($result);
-            echo $row;
 
-        ?>
-    </div>
 </body>
 </html>
