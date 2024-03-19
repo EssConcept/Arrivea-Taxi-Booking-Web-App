@@ -96,12 +96,12 @@
         }
     </style>
     <header>
-        <img src="arrivea-logo-black.png" height="70px" width="70px" class="logo" alt="logo">
+        <img src="LandingPage/arrivea-logo-black.png" height="70px" width="70px" class="logo" alt="logo">
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#aboutus">About Us</a></li>
-            <li><a href="#faq">FAQ</a></li>
+            <li><a href="LandingPage/index.php">Home</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">FAQ</a></li>
             <li><button onclick="redirectToMap()">Book a taxi</button></li>
             <li><button onclick="redirectToBusinessAccount()">Business account</button></li>
         </ul>
@@ -109,11 +109,11 @@
 
     <script>
     function redirectToBusinessAccount() {
-        window.location.href = "/Projects/Arrivea/login.php";
+        window.location.href = "/Projects/Arrivea/register_company.php";
     }
 
     function redirectToMap(){
-        window.location.href = "/Projects/Arrivea/login.php";
+        window.location.href = "/Projects/Arrivea/user_order.php";
     }
 </script>
 </html>

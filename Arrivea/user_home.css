@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&family=Raleway&display=swap');
+.user_table{
+    padding-top: 100px;
+    margin-left: 100px;
+}
+.main_table{
+    margin-top: 100px;
+    margin-left: 100px;
+    border: solid 1px black;
+}
+.table_columns{
+    font-weight: bold;
+    padding-right: 10px;
+}
+.map_div{
+    padding-top: 300px;
+    border: solid 1px black;
+}
+.float-container{
+    padding: 20px;
+    
+}
+.cont{
+    display: flex;
+    margin-top: 150px;
+    width: 100%;
+}
+.child-left{
+    width: 15%;
+}
+.float-child{
+    border: 1px solid black;
+    padding: 0px;
+    flex: 1;
+}
+
+.float-child2{
+    float: right;
+    border: 0px solid black;
+    padding: 100px;
+    width: 25%;
+}
+
+.submitbutton{
+    padding: 10px 10px;
+    background-color: #5aff4e;
+    color: black;
+    border-style: none;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.submitbutton:hover{
+    background-color: black;
+    color:#5aff4e;
+}
+
+#submitDes {
+    margin-right:10px;
+    padding: 5px;
+    background-color: #4e57ff;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight:500;
+    margin-bottom: 10px;
+    margin-top: 5px;
+  }
+  
+
+form {
+  font-family: 'Poppins'; 
+  margin: 0 auto; 
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+form input[type="text"] {
+  width: calc(100% - 10px);
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: 'Poppins';
+}
+
+.child-left table{
+    border-collapse: collapse;
+    margin-left:20px;
+}
+
+.child-left th {
+    padding: 5px; 
+    border: 1px solid #ddd; 
+    text-align: center; 
+}
+
+h2{
+    padding-bottom: 20px;
+}

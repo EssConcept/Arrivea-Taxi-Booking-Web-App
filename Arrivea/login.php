@@ -90,7 +90,7 @@ session_start();
                                         header("Location: company_home.php");
                                     }
                                     else if($user_data['role'] == 'user'){
-                                        header("Location: user_home.php");
+                                        header("Location: user_order.php");
                                     }
                                     else if($user_data['role'] == 'driver'){
                                         header("Location: driver_home.php");

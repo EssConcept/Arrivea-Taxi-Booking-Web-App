@@ -1,0 +1,86 @@
+table{
+    margin-top: 100px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+div {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+
+input[type="checkbox"] {
+    margin-bottom: 10px;
+}
+
+
+input[type="submit"], button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 5px;
+}
+
+
+button a {
+    text-decoration: none;
+    color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #dddddd;
+}
+
+.cancelbtn {
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.cancelbtn:hover {
+    background-color: #d32f2f;
+    color:white;
+}
+
+.submit, .cancelbtn{
+    margin-left:80px;
+}
+
+.editlink:hover{
+    overflow: hidden;
+}
