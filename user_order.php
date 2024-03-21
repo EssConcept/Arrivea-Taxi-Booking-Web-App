@@ -1,3 +1,4 @@
+@ -0,0 +1,306 @@
 <?php
 session_start();
 
@@ -13,7 +14,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="styling/user_home.css" type="text/css">
+    <link rel="stylesheet" href="user_home.css" type="text/css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZBhaKU-h-mmrjF-G4_AcC0qS74rdBtR0&callback=initMap" async defer></script>
     <script
         src="https://code.jquery.com/jquery-3.3.1.js"
@@ -27,11 +28,8 @@ session_start();
         });
     </script>
     <style>
-        /* Add your custom styles here */
         #map {
             height: 700px;
-            width: 800px;
-            transform: translatex(500px) translateY(200px);
         }
 
         .custom-map-control-button {
@@ -46,7 +44,43 @@ session_start();
 </head>
 <body>
     <div id="header"></div><br>
-    <div class="float-container">
+    <div class="cont">
+        <div class="child-left">
+            <table> 
+            <thead>
+                <tr>
+                    <td colspan="2">
+                        <h2>Cheapest Taxi List</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Company</th>
+                    <th>Price/km</th>
+                </tr>
+            </thead>
+                <tbody>
+                    <?php
+                    $sql = "SELECT company_name, price FROM company ORDER BY price ASC LIMIT 20 ";
+                    $result = mysqli_query($con, $sql);
+
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                            echo "<td align='center'>" . htmlspecialchars($row['company_name']) . "</td>";
+                            echo "<td align='center'>" . htmlspecialchars($row['price']) . "</td>";
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "<tr><td colspan='2'>No companies found</td></tr>";
+                    }
+                    ?>
+                </tbody>
+                </tr>
+            </table>
+    
+    
+    
+        </div>
     <div class="float-child" class="map_div" id="map">
         <script>
             let map, infoWindow, directionsService, directionsRenderer, usrpos;
@@ -238,8 +272,8 @@ session_start();
             echo '<p><label for="price">Price per KM:</label> <input readonly type="text" name="price" value="' . htmlspecialchars($row2['price']) . '"></p>';
             // Hidden driver id
             echo '<input type="hidden" name="driver_id" value="' . $driver_id . '">';
-            echo '<p><label for="destination">Destination: </label><input type="" id="destination" name="destination" value=""><input type ="button" id="submitDes" onclick="destinationMarker()"/>';
-            echo '<br><input class="submitbutton" type="submit" value="Submit">';
+            echo '<p><label for="destination">Destination: </label><input type="text" id="destination" name="destination" value="">';
+            echo '<input type ="button" id="submitDes" onclick="destinationMarker()" value="Show route"/><br><input class="submitbutton" type="submit" value="Submit">';
             echo '</form>';
             echo '</div>';
           }
@@ -253,10 +287,9 @@ session_start();
             $result = mysqli_query($con, $query);
             $row = mysqli_fetch_assoc($result);
             $vehicle_id = $row['vehicle_id'];
-            $order_time = date("YYYY-mm-dd",time());
 
-            $sql = "INSERT INTO drive(driver_id, passanger_id, vehicle_id, pickup_location, destination)
-                    VALUES('$driver_id', '$user_id', '$vehicle_id', '$pickup_location', '$destination')";
+            $sql = "INSERT INTO drive(driver_id, passanger_id, vehicle_id, pickup_location, destination, order_time)
+                    VALUES('$driver_id', '$user_id', '$vehicle_id', '$pickup_location', '$destination', NOW())";
             mysqli_query($con, $sql);
             ?>
             <script>
