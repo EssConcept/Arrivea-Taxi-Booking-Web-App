@@ -14,7 +14,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="user_home.css" type="text/css">
+    <link rel="stylesheet" href="styling/user_home.css" type="text/css">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZBhaKU-h-mmrjF-G4_AcC0qS74rdBtR0&callback=initMap" async defer></script>
     <script
         src="https://code.jquery.com/jquery-3.3.1.js"
@@ -297,6 +297,8 @@ session_start();
                 window.location.href =newUrl;
             </script>
             <?php
+
+
           }
 
     ?>
