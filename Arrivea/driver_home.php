@@ -98,6 +98,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['passanger_id']) && (is
     $insert_query = "INSERT INTO ride_confirmation (drive_id, confirmation_status, confirmation_time) VALUES ('$passanger_id', '$confirmation_status', NOW())";
     $insert_result = mysqli_query($con, $insert_query);
 
+    if($confirmation_status = 'confirmed'){
+        $_SESSION['drive_id'] = $passanger_id;
+        header ('Location: driver_drive.php');
+    }
 }
 
 /*
@@ -342,7 +346,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['passanger_id']) && iss
             <td class="r1" >Distance</td>
         </tr>
         <?php
-        $drive_query = "SELECT passanger_id, pickup_location, destination, order_time, distance FROM drive";
+        $drive_query = "SELECT drive_id, passanger_id, pickup_location, destination, order_time, distance FROM drive";
         $drive_result = mysqli_query($con, $drive_query);
 
         if ($drive_result && mysqli_num_rows($drive_result) > 0) {
@@ -355,12 +359,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['passanger_id']) && iss
                 echo "<td class='r1'>".$drive_data['distance']."</td>";
                 echo "<td class='action-buttons'>";
                 echo "<form method='post'>";
-                echo "<input type='hidden' name='passanger_id' value='".$drive_data['passanger_id']."'>";
+                echo "<input type='hidden' name='passanger_id' value='".$drive_data['drive_id']."'>";
                 echo "<button type='submit' class='accept-btn' name='accept_drive'>Accept</button>";
                 echo "</form>";
 
                 echo "<form method='post'>";
-                echo "<input type='hidden' name='passanger_id' value='".$drive_data['passanger_id']."'>";
+                echo "<input type='hidden' name='passanger_id' value='".$drive_data['drive_id']."'>";
                 echo "<button type='submit' class='reject-btn' name='reject_drive'>Reject</button>";
                 echo "</form>";
                 echo "</td>";
